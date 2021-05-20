@@ -6,9 +6,12 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName="doctors")
 data class Doctor (
-    @PrimaryKey
-    val doctorID:String,
-    val firstName:String,
-    val lastName:Double,
-    val speciality:String
+
+    var firstName:String,
+    var lastName:Double,
+    var speciality:String
 )
+{
+    @PrimaryKey(autoGenerate = true)
+    var doctorID:String?=null
+}
