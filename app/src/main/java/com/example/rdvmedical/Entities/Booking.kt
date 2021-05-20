@@ -8,10 +8,6 @@ import java.sql.Date
 
 @Entity (tableName="bookings",foreignKeys =
         arrayOf(
-                ForeignKey(entity = Doctor::class,
-                        parentColumns = arrayOf("doctorID"),
-                        childColumns = arrayOf("doctorID"),
-                        onDelete = ForeignKey.CASCADE),
                 ForeignKey(entity = Treatment::class,
                         parentColumns = arrayOf("treatmentID"),
                         childColumns = arrayOf("treatmentID"),
@@ -20,8 +16,8 @@ import java.sql.Date
 
 data class Booking (
 
-        val doctorID:String,   //Clé etrangère
-        val treatmentID:Long, // un booking sans traitement
+
+        val treatmentID:Long,
         val bookingDate: Date,
         val bookingTime:String
 )
