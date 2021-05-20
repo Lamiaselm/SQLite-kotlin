@@ -19,10 +19,13 @@ import java.sql.Date
                   ))
 
 data class Booking (
-        @PrimaryKey
-        val bookingID:Long,
+
         val doctorID:String,   //Clé etrangère
-        val treatmentID:Long?, // un booking sans traitement
+        val treatmentID:Long, // un booking sans traitement
         val bookingDate: Date,
         val bookingTime:String
 )
+{
+        @PrimaryKey(autoGenerate = true)
+        var bookingID:Long?=null
+}
