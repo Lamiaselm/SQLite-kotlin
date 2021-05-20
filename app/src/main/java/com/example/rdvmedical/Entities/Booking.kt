@@ -1,11 +1,22 @@
 package com.example.rdvmedical.Entities
 
 import androidx.room.Entity
+import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 import java.sql.Date
 
 
-@Entity (tableName="bookings",foreignKeys = arrayOf("doctorID"))
+@Entity (tableName="bookings",foreignKeys =
+        arrayOf(
+                ForeignKey(entity = Doctor::class,
+                        parentColumns = arrayOf("doctorID"),
+                        childColumns = arrayOf("doctorID"),
+                        onDelete = ForeignKey.CASCADE),
+                ForeignKey(entity = Treatment::class,
+                        parentColumns = arrayOf("treatmentID"),
+                        childColumns = arrayOf("treatmentID"),
+                        onDelete = ForeignKey.CASCADE)
+                  ))
 
 data class Booking (
         @PrimaryKey
