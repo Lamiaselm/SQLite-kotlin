@@ -21,7 +21,7 @@ interface TreatmentDao {
     fun getAllTreatment():List<Treatment>
     // Recuperer la liste des traitement en cours
 
-    @Query("Select * from treatments where tratmentEndDate < :currentDate")
+    @Query("Select * from treatments where :currentDate<treatmentEndDate")
     fun getCurrentTreatment(currentDate: Date):List<Treatment>
     //Récuperer le traitement en cours d'un docteur donné
   //  @Query("select * from treatments where doctorID=:doctorID and tratmentEndDate < :currentDate ")

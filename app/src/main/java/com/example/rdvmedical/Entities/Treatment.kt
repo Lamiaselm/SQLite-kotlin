@@ -13,7 +13,7 @@ data class Treatment (
     @NonNull
     var treatmentID:Long,
     val disease:String,
-    val tratmentDescription:String,
+    val treatmentDescription:String,
     val treatmentBeginDate:Date,
-    val tratmentEndDate:Date
+    val treatmentEndDate:Date
 )
