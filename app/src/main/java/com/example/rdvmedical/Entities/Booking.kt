@@ -16,12 +16,9 @@ import java.sql.Date
 
 data class Booking (
 
-
+        @PrimaryKey
+        var bookingID:Long?,
         val treatmentID:Long,
         val bookingDate: Date,
         val bookingTime:String
 )
-{
-        @PrimaryKey(autoGenerate = true)
-        var bookingID:Long?=null
-}

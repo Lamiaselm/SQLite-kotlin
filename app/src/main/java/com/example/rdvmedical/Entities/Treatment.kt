@@ -7,14 +7,10 @@ import java.util.*
 
 @Entity(tableName="treatments")
 data class Treatment (
-
+    @PrimaryKey
+    var treatmentID:Long?,
     val disease:String,
     val tratmentDescription:String,
     val treatmentBeginDate:Date,
     val tratmentEndDate:Date
 )
-{
-
-    @PrimaryKey(autoGenerate = true)
-    var treatmentID:Long?=null
-}
