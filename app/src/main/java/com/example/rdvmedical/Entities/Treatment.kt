@@ -11,6 +11,7 @@ data class Treatment (
     @PrimaryKey
     @NonNull
     var treatmentID:Long,
+    var doctorID:String,
     val disease:String,
     val tratmentDescription:String,
     val treatmentBeginDate:Date,

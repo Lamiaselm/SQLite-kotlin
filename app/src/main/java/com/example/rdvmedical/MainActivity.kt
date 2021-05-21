@@ -10,8 +10,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         RoomService.context=this
-        val doctor = Doctor("Lamia","Selmane","Ophtalmologue,",1)
-       RoomService.appDatabase.getDoctorDao().addDoctor(doctor)
+        val doctor = Doctor("1","Lamia","Selmane","Ophtalmologue,",1)
+        RoomService.appDatabase.getDoctorDao().addDoctor(doctor)
         RoomService.appDatabase.getDoctorDao().getAllDoctors()
+
     }
 }
