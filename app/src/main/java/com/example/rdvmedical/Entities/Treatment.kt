@@ -1,5 +1,6 @@
 package com.example.rdvmedical.Entities
 
+import androidx.annotation.NonNull
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.util.*
@@ -8,7 +9,8 @@ import java.util.*
 @Entity(tableName="treatments")
 data class Treatment (
     @PrimaryKey
-    var treatmentID:Long?,
+    @NonNull
+    var treatmentID:Long,
     val disease:String,
     val tratmentDescription:String,
     val treatmentBeginDate:Date,

@@ -1,5 +1,6 @@
 package com.example.rdvmedical.Entities
 
+import androidx.annotation.NonNull
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
@@ -17,7 +18,8 @@ import java.sql.Date
 data class Booking (
 
         @PrimaryKey
-        var bookingID:Long?,
+        @NonNull
+        var bookingID:Long,
         val treatmentID:Long,
         val bookingDate: Date,
         val bookingTime:String
