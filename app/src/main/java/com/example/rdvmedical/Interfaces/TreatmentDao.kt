@@ -4,6 +4,7 @@ import android.text.TextUtils
 import androidx.room.*
 import com.example.rdvmedical.Entities.Treatment
 import java.time.format.DateTimeFormatter
+import java.util.*
 
 
 @Dao
@@ -20,9 +21,9 @@ interface TreatmentDao {
     fun getAllTreatment():List<Treatment>
     // Recuperer la liste des traitement en cours
 
-    @Query("Select * from treatments where tratmentEndDate<")
-    fun getCurrentTreatment():List<Treatment>
+    @Query("Select * from treatments where tratmentEndDate < :currentDate")
+    fun getCurrentTreatment(currentDate: Date):List<Treatment>
     //Récuperer le traitement en cours d'un docteur donné
-    @Query("select * from treatments where doctorID=:doctorID")
-    fun getCurrentTreatmentByDoctor(doctorID:Int):Treatment
+    @Query("select * from treatments where doctorID=:doctorID and tratmentEndDate < :currentDate ")
+    fun getCurrentTreatmentByDoctor(doctorID:Int,currentDate: Date):Treatment
 }
