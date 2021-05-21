@@ -27,7 +27,7 @@ class ExampleInstrumentedTest {
     }
     @Test
     fun testInsertAndGetDoctor() {
-        val doctor1 = Doctor("1","Lamia","Selmane","Ophtalmologue")
+        val doctor1 = Doctor(1,"Lamia","Selmane","Ophtalmologue")
         mDataBase?.getDoctorDao()?.addDoctor(doctor1)
         val listDoc = mDataBase?.getDoctorDao()?.getAllDoctors().get(0)
         assertEquals(doctor1,listDoc)

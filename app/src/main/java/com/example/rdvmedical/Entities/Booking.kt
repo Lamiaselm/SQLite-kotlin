@@ -9,7 +9,7 @@ import java.util.*
 
 @Entity (tableName="bookings",foreignKeys =
         arrayOf(
-                ForeignKey(entity = Treatment::class,
+                ForeignKey(entity = Doctor::class,
                         parentColumns = arrayOf("doctorID"),
                         childColumns = arrayOf("doctorID"),
                         onDelete = ForeignKey.CASCADE),
@@ -26,7 +26,7 @@ data class Booking (
         @NonNull
         var bookingID:Long,
         val treatmentID:Long,
-        val doctorID:String,
+        val doctorID:Long,
         val bookingDate: Date,
         val bookingTime:String
 )

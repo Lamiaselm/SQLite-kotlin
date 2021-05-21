@@ -11,9 +11,9 @@ import androidx.room.PrimaryKey
 data class Doctor (
     @PrimaryKey
     @NonNull
-    var doctorID:String,
+    var doctorID:Long,
     var firstName:String,
-    var lastName:String, // A VERIFIER CUZ I FOUND DOUBLE ON THE TP LOL
+    var lastName:String,
     var speciality:String
 
 )
