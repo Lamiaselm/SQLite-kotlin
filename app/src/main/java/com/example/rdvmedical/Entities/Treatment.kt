@@ -2,11 +2,19 @@ package com.example.rdvmedical.Entities
 
 import androidx.annotation.NonNull
 import androidx.room.Entity
+import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 import java.util.*
 
 
-@Entity(tableName="treatments")
+@Entity(tableName="treatments",foreignKeys =
+arrayOf(
+    ForeignKey(entity = Doctor::class,
+        parentColumns = arrayOf("doctorD"),
+        childColumns = arrayOf("doctorID"),
+        onDelete = ForeignKey.CASCADE)
+
+))
 data class Treatment (
     @PrimaryKey
     @NonNull
