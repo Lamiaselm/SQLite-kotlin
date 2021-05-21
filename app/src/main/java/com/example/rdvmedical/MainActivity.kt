@@ -9,10 +9,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val appDatabase = Room.databaseBuilder(this,AppDatabase::class.java,"dbDoctor")
-            .allowMainThreadQueries().build()
+        RoomService.context=this
         val doctor = Doctor("Lamia","Selmane","Ophtalmologue,",1)
-        appDatabase.getDoctorDao().addDoctor(doctor)
-        appDatabase.getDoctorDao().getAllDoctors()
+       RoomService.appDatabase.getDoctorDao().addDoctor(doctor)
+        RoomService.appDatabase.getDoctorDao().getAllDoctors()
     }
 }
