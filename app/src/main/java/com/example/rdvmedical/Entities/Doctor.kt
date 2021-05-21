@@ -16,7 +16,7 @@ import androidx.room.PrimaryKey
 data class Doctor (
 
     var firstName:String,
-    var lastName:Double,
+    var lastName:String, // A VERIFIER CUZ I FOUND DOUBLE ON THE TP LOL
     var speciality:String,
     var bookingID:Long?
 )
