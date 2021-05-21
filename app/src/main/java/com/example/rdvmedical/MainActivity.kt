@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         RoomService.context=this
         val currentTime: Date = Calendar.getInstance().getTime()
-        val doctor = Doctor("1","Lamia","Selmane","Ophtalmologue,",1)
+        val doctor = Doctor("1","Lamia","Selmane","Ophtalmologue,")
         RoomService.appDatabase.getDoctorDao().addDoctor(doctor)
         RoomService.appDatabase.getDoctorDao().getAllDoctors()
         RoomService.appDatabase.getTreatmentDao().getCurrentTreatment(currentTime)

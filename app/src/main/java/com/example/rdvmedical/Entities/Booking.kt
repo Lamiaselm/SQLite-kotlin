@@ -4,16 +4,16 @@ import androidx.annotation.NonNull
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
-import java.sql.Date
+import java.util.*
 
 
-@Entity (tableName="bookings",foreignKeys =
+@Entity (tableName="bookings"/*,foreignKeys =
         arrayOf(
                 ForeignKey(entity = Treatment::class,
                         parentColumns = arrayOf("treatmentID"),
                         childColumns = arrayOf("treatmentID"),
                         onDelete = ForeignKey.CASCADE)
-                  ))
+                  )*/)
 
 data class Booking (
 

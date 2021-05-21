@@ -10,7 +10,7 @@ import java.util.*
 @Entity(tableName="treatments",foreignKeys =
 arrayOf(
     ForeignKey(entity = Doctor::class,
-        parentColumns = arrayOf("doctorD"),
+        parentColumns = arrayOf("doctorID"),
         childColumns = arrayOf("doctorID"),
         onDelete = ForeignKey.CASCADE)
 
