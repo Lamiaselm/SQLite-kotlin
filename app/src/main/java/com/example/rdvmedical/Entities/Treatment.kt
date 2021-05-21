@@ -7,19 +7,11 @@ import androidx.room.PrimaryKey
 import java.util.*
 
 
-@Entity(tableName="treatments",foreignKeys =
-arrayOf(
-    ForeignKey(entity = Doctor::class,
-        parentColumns = arrayOf("doctorID"),
-        childColumns = arrayOf("doctorID"),
-        onDelete = ForeignKey.CASCADE)
-
-))
+@Entity(tableName="treatments")
 data class Treatment (
     @PrimaryKey
     @NonNull
     var treatmentID:Long,
-    var doctorID:String,
     val disease:String,
     val tratmentDescription:String,
     val treatmentBeginDate:Date,
