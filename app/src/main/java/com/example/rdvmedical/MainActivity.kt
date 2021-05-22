@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         val treatmentBegindate=SimpleDateFormat("dd/mm/yy").parse("10/05/21")
         val treatmentEndDate=SimpleDateFormat("dd/mm/yy").parse("20/06/21")
         val currentTime: Date = Calendar.getInstance().getTime()
+        print("current time is "+currentTime)
 
 
         val doctor = Doctor(3,"Abdelkhalek","Zellat","Cardiologue")
@@ -29,9 +30,6 @@ class MainActivity : AppCompatActivity() {
         RoomService.appDatabase.getTreatmentDao().getCurrentTreatment(currentTime)
 
 
-
-
-        RoomService.appDatabase.getTreatmentDao().getCurrentTreatment(currentTime)
 
     }
 }
