@@ -82,7 +82,21 @@ class MainActivity : AppCompatActivity() {
         val all = RoomService.appDatabase.getTreatmentDao().getCurrentTreatmentByDoctor(firstName,currentdate)
         aff2.setOnClickListener{
             view->
-            Toast.makeText(applicationContext, "Voici le traitement du medecin : ${all.treatmentDescription}", Toast.LENGTH_LONG).show();
+            if (firstName!=null)
+            {
+                if (all!=null)
+                {
+                    Toast.makeText(applicationContext, "Voici le traitement du medecin $firstName : ${all.treatmentDescription}", Toast.LENGTH_LONG).show();
+
+                }
+                else {
+                    Toast.makeText(applicationContext, "Aucun traitement pour le medecin $firstName ", Toast.LENGTH_LONG).show();
+
+                }
+            }
+            Toast.makeText(applicationContext, "Veuillez saisir un nom du medecin", Toast.LENGTH_LONG).show();
+
+
 
         }
 
