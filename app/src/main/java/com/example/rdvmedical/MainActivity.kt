@@ -82,11 +82,10 @@ class MainActivity : AppCompatActivity() {
 
             val firstName=editTextTextPersonName.getText().toString()
             val all = RoomService.appDatabase.getTreatmentDao().getCurrentTreatmentByDoctor(firstName,currentdate)
-            Toast.makeText(applicationContext, "Voici le traitement du medecin $firstName : ${all.treatmentDescription}", Toast.LENGTH_LONG).show();
 
-            /* if (firstName!=null)
+           if (firstName!=null)
              {
-                 if (all==null)
+                 if (all!==null)
                  {
                      Toast.makeText(applicationContext, "Voici le traitement du medecin $firstName : ${all.treatmentDescription}", Toast.LENGTH_LONG).show();
 
@@ -100,7 +99,7 @@ class MainActivity : AppCompatActivity() {
              else {
                  Toast.makeText(applicationContext, "Veuillez saisir un nom du medecin", Toast.LENGTH_LONG).show();
 
-             }*/
+             }
 
 
 
