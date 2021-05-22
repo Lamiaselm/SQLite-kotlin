@@ -1,19 +1,16 @@
 package com.example.rdvmedical
 
 import androidx.room.Room
-import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.platform.app.InstrumentationRegistry
 import com.example.rdvmedical.Entities.Booking
 import com.example.rdvmedical.Entities.Doctor
 import com.example.rdvmedical.Entities.Treatment
 import org.junit.After
-import org.junit.Assert
-
+import org.junit.Assert.assertEquals
+import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-
-import org.junit.Assert.*
-import org.junit.Before
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -25,6 +22,19 @@ import java.util.*
 @RunWith(AndroidJUnit4::class)
 class ExampleInstrumentedTest {
     lateinit var mDataBase:AppDatabase
+
+    //date now
+    var sdf: SimpleDateFormat? = SimpleDateFormat("dd/mm/yy")
+    var cal = Calendar.getInstance()
+
+    var now = cal.time // set the current datetime in a Date-object
+
+
+    // SimpleDateFormat.format( Date date ) returns a formatted string
+    // with the predefined format
+    var mTimeString = sdf!!.format(now)
+
+
     val treatmentEndDate= SimpleDateFormat("dd/mm/yy").parse("20/06/21")
     val treatmentBegindate=SimpleDateFormat("dd/mm/yy").parse("10/05/21")
     val current=SimpleDateFormat("dd/mm/yy").parse("09/06/21")
