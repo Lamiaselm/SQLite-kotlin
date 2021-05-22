@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         RoomService.context=this
 
         // GET THE CURRENTY DATE //
-        val currentdate=SimpleDateFormat("dd/mm/yy").parse("01/05/21")
+        val currentdate=SimpleDateFormat("dd/mm/yy").parse("03/05/21")
 
         //******* ADD DOCOTRS ********* //
         val doc1 = Doctor(1,"Lamia","Selmane","Cardiologue")
@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         val treatmentBegindate1=SimpleDateFormat("dd/mm/yy").parse("10/05/21")
         val treatmentBegindate2=SimpleDateFormat("dd/mm/yy").parse("13/05/21")
         val treatmentBegindate3=SimpleDateFormat("dd/mm/yy").parse("23/05/21")
-        val treatmentEndDate1=SimpleDateFormat("dd/mm/yy").parse("05/05/21")
+        val treatmentEndDate1=SimpleDateFormat("dd/mm/yy").parse("09/05/21")
         val treatmentEndDate2=SimpleDateFormat("dd/mm/yy").parse("28/05/21")
         val treatmentEndDate3=SimpleDateFormat("dd/mm/yy").parse("03/06/21")
 
@@ -65,10 +65,10 @@ class MainActivity : AppCompatActivity() {
 
         val i:Int
         aff1.setOnClickListener { view ->
-            var i =1
+            var i =0
                   while (i<result.size)
                   {
-                      Toast.makeText(applicationContext, "Voici les traitement en cours : ${result[i].disease}", Toast.LENGTH_LONG).show();
+                      Toast.makeText(applicationContext, "Voici les traitement en cours : ${result[i].treatmentDescription}", Toast.LENGTH_LONG).show();
                       i++
 
                   }
@@ -82,23 +82,25 @@ class MainActivity : AppCompatActivity() {
 
             val firstName=editTextTextPersonName.getText().toString()
             val all = RoomService.appDatabase.getTreatmentDao().getCurrentTreatmentByDoctor(firstName,currentdate)
-            if (firstName!=null)
-            {
-                if (all==null)
-                {
-                    Toast.makeText(applicationContext, "Voici le traitement du medecin $firstName : ${all.treatmentDescription}", Toast.LENGTH_LONG).show();
+            Toast.makeText(applicationContext, "Voici le traitement du medecin $firstName : ${all.treatmentDescription}", Toast.LENGTH_LONG).show();
 
-                }
+            /* if (firstName!=null)
+             {
+                 if (all==null)
+                 {
+                     Toast.makeText(applicationContext, "Voici le traitement du medecin $firstName : ${all.treatmentDescription}", Toast.LENGTH_LONG).show();
 
-                else  {
-                    Toast.makeText(applicationContext, "Aucun traitement pour le medecin $firstName ", Toast.LENGTH_LONG).show();
+                 }
 
-                }
-            }
-            else {
-                Toast.makeText(applicationContext, "Veuillez saisir un nom du medecin", Toast.LENGTH_LONG).show();
+                 else  {
+                     Toast.makeText(applicationContext, "Aucun traitement pour le medecin $firstName ", Toast.LENGTH_LONG).show();
 
-            }
+                 }
+             }
+             else {
+                 Toast.makeText(applicationContext, "Veuillez saisir un nom du medecin", Toast.LENGTH_LONG).show();
+
+             }*/
 
 
 
