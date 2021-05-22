@@ -1,7 +1,9 @@
 package com.example.rdvmedical
 
+import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.rdvmedical.Entities.Booking
 import com.example.rdvmedical.Entities.Doctor
@@ -13,14 +15,19 @@ import java.time.format.DateTimeFormatter
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         RoomService.context=this
 
         // GET THE CURRENTY DATE //
-        val currentdate=SimpleDateFormat("dd/mm/yy").parse("03/05/21")
-
+       // val date = SimpleDateFormat("dd/mm/yy").parse(currentdate)
+      //  val currentDate = SimpleDateFormat("yyyy/mm/dd")
+    //    val calForDate = Calendar.getInstance()
+        //val saveCurrentDate = currentDate.format(calForDate.getTime());
+       // var simpleFormat =  DateTimeFormatter.ISO_DATE;
+     //   var convertedDate = LocalDate.parse(saveCurrentDate, simpleFormat)
         //******* ADD DOCOTRS ********* //
         val doc1 = Doctor(1,"Lamia","Selmane","Cardiologue")
         val doc2 = Doctor(2,"Noha","Nekamiche","Dentiste")
@@ -31,25 +38,25 @@ class MainActivity : AppCompatActivity() {
         RoomService.appDatabase.getDoctorDao().addDoctor(doc3)
 
         //******* ADD TREATMENTS ********* //
-        val treatmentBegindate1=SimpleDateFormat("dd/mm/yy").parse("10/05/21")
-        val treatmentBegindate2=SimpleDateFormat("dd/mm/yy").parse("13/05/21")
-        val treatmentBegindate3=SimpleDateFormat("dd/mm/yy").parse("23/05/21")
-        val treatmentEndDate1=SimpleDateFormat("dd/mm/yy").parse("09/05/21")
-        val treatmentEndDate2=SimpleDateFormat("dd/mm/yy").parse("28/05/21")
-        val treatmentEndDate3=SimpleDateFormat("dd/mm/yy").parse("03/06/21")
+        val treatmentBegindate1=SimpleDateFormat("dd/MM/yyyy").parse("10/05/21")
+        val treatmentBegindate2=SimpleDateFormat("dd/MM/yyyy").parse("13/05/21")
+        val treatmentBegindate3=SimpleDateFormat("dd/MM/yyyy").parse("23/05/21")
+        val treatmentEndDate1=SimpleDateFormat("dd/MM/yyyy").parse("09/05/2021")
+        val treatmentEndDate2=SimpleDateFormat("dd/MM/yyyy").parse("28/05/2021")
+        val treatmentEndDate3=SimpleDateFormat("dd/MM/yyyy").parse("03/06/2021")
 
         val treatment1=Treatment(1,"coruna","Covid19 caused the death of millions of people",treatmentBegindate1,treatmentEndDate1)
-        val treatment2=Treatment(2,"heart attack","heart attack ",treatmentBegindate2,treatmentEndDate2)
-        val treatment3=Treatment(3,"injury","injury",treatmentBegindate3,treatmentEndDate3)
+        val treatment2=Treatment(2,"heart attack","heart attack is dangerous ",treatmentBegindate2,treatmentEndDate2)
+        val treatment3=Treatment(3,"injury","injury be carefull man ",treatmentBegindate3,treatmentEndDate3)
 
         RoomService.appDatabase.getTreatmentDao().addTreatment(treatment1)
         RoomService.appDatabase.getTreatmentDao().addTreatment(treatment2)
         RoomService.appDatabase.getTreatmentDao().addTreatment(treatment3)
 
         //******* ADD BOOKINGS ********* //
-        val bookingDate1=SimpleDateFormat("dd/mm/yy").parse("13/05/21")
-        val bookingDate2=SimpleDateFormat("dd/mm/yy").parse("20/04/21")
-        val bookingDate3=SimpleDateFormat("dd/mm/yy").parse("28/03/21")
+        val bookingDate1=SimpleDateFormat("dd/MM/yyyy").parse("13/05/21")
+        val bookingDate2=SimpleDateFormat("dd/MM/yyyy").parse("20/04/21")
+        val bookingDate3=SimpleDateFormat("dd/MM/yyyy").parse("28/03/21")
 
         val booking1 =Booking(1,1,1,bookingDate1,"08:00pm")
         val booking2 =Booking(2,2,2,bookingDate2,"08:00pm")
@@ -61,10 +68,12 @@ class MainActivity : AppCompatActivity() {
 
 
         // TESTER LA FONCTION getCurrentTreatment //
-         val result =RoomService.appDatabase.getTreatmentDao().getCurrentTreatment(currentdate)
 
-        val i:Int
+
         aff1.setOnClickListener { view ->
+            val currentdate=System.currentTimeMillis().let { Date(it) }
+            val result =RoomService.appDatabase.getTreatmentDao().getCurrentTreatment(currentdate)
+
             var i =0
                   while (i<result.size)
                   {
@@ -74,11 +83,13 @@ class MainActivity : AppCompatActivity() {
                   }
 
          }
+
         // TESTER LA FONCTION GetCurrentTreatmentBydoctor //
 
         aff2.setOnClickListener{
 
             view->
+            val currentdate=System.currentTimeMillis().let { Date(it) }
 
             val firstName=editTextTextPersonName.getText().toString()
             val all = RoomService.appDatabase.getTreatmentDao().getCurrentTreatmentByDoctor(firstName,currentdate)
