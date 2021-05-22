@@ -1,12 +1,12 @@
 package com.example.rdvmedical
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.rdvmedical.Entities.Booking
 import com.example.rdvmedical.Entities.Doctor
 import com.example.rdvmedical.Entities.Treatment
 import java.text.SimpleDateFormat
-import java.util.*
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,6 +28,8 @@ class MainActivity : AppCompatActivity() {
          RoomService.appDatabase.getDoctorDao().addDoctor(doctor)
          RoomService.appDatabase.getBookingDao().addBooking(booking)
          RoomService.appDatabase.getTreatmentDao().addTreatment(treatment)
+
+        Toast.makeText(applicationContext, "Bravo !!!! Vous avez obtenu 5 points, le score total est : $scoretatal  points ", Toast.LENGTH_SHORT).show();
          RoomService.appDatabase.getTreatmentDao().getCurrentTreatment(current)
          RoomService.appDatabase.getTreatmentDao().getCurrentTreatmentByDoctor(3,current)
 
