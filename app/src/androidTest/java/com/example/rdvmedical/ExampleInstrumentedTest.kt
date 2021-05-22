@@ -27,18 +27,21 @@ class ExampleInstrumentedTest {
     lateinit var mDataBase:AppDatabase
     val treatmentEndDate= SimpleDateFormat("dd/mm/yy").parse("20/06/21")
     val treatmentBegindate=SimpleDateFormat("dd/mm/yy").parse("10/05/21")
-    val current=SimpleDateFormat("dd/mm/yy").parse("22/06/21")
+    val current=SimpleDateFormat("dd/mm/yy").parse("09/06/21")
     val bookingDate=SimpleDateFormat("dd/mm/yy").parse("13/04/21")
+
+    val doctor = Doctor(3,"Lamia","Selmane","Cardiologue")
+    val treatment= Treatment(3,"heart attack","heart attack is dangerous disease must be controlled",treatmentBegindate,treatmentEndDate)
+    val booking = Booking(3,3,3,bookingDate,"08:00pm")
 
     @Before
     fun initDB() { mDataBase =
         Room.inMemoryDatabaseBuilder(InstrumentationRegistry. getInstrumentation().context,AppDatabase::class.java).build()
     }
+
     @Test
     fun testAddTreatment() {
-        val doctor = Doctor(3,"Abdelkhalek","Zellat","Cardiologue")
-        val treatment= Treatment(3,"heart attack","heart attack is dangerous disease must be controlled",treatmentBegindate,treatmentEndDate)
-        val booking = Booking(3,3,3,bookingDate,"08:00pm")
+
         mDataBase?.getDoctorDao()?.addDoctor(doctor)
         mDataBase?.getTreatmentDao()?.addTreatment(treatment)
         mDataBase?.getBookingDao()?.addBooking(booking)
@@ -50,13 +53,7 @@ class ExampleInstrumentedTest {
     }
     @Test
     fun testgetCurrentTreatment() {
-        val treatmentEndDate= SimpleDateFormat("dd/mm/yy").parse("20/06/21")
-        val treatmentBegindate=SimpleDateFormat("dd/mm/yy").parse("10/05/21")
-        val current=SimpleDateFormat("dd/mm/yy").parse("09/06/21")
-        val bookingDate=SimpleDateFormat("dd/mm/yy").parse("13/04/21")
-        val doctor = Doctor(3,"Abdelkhalek","Zellat","Cardiologue")
-        val treatment= Treatment(3,"heart attack","heart attack is dangerous disease must be controlled",treatmentBegindate,treatmentEndDate)
-        val booking = Booking(3,3,3,bookingDate,"08:00pm")
+
         mDataBase?.getDoctorDao()?.addDoctor(doctor)
         mDataBase?.getTreatmentDao()?.addTreatment(treatment)
         mDataBase?.getBookingDao()?.addBooking(booking)
@@ -70,14 +67,7 @@ class ExampleInstrumentedTest {
     }
     @Test
     fun testgetTreatmentByDoctor() {
-        val treatmentEndDate= SimpleDateFormat("dd/mm/yy").parse("20/06/21")
-        val treatmentBegindate=SimpleDateFormat("dd/mm/yy").parse("10/05/21")
-        val current=SimpleDateFormat("dd/mm/yy").parse("09/06/21")
-        val bookingDate=SimpleDateFormat("dd/mm/yy").parse("13/04/21")
 
-        val doctor = Doctor(3,"Abdelkhalek","Zellat","Cardiologue")
-        val treatment= Treatment(3,"heart attack","heart attack is dangerous disease must be controlled",treatmentBegindate,treatmentEndDate)
-        val booking = Booking(3,3,3,bookingDate,"08:00pm")
 
         mDataBase?.getDoctorDao()?.addDoctor(doctor)
         mDataBase?.getTreatmentDao()?.addTreatment(treatment)

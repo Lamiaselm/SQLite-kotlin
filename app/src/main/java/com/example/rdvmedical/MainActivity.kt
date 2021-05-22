@@ -17,17 +17,20 @@ class MainActivity : AppCompatActivity() {
         val bookingDate=SimpleDateFormat("dd/mm/yy").parse("13/04/21")
         val treatmentBegindate=SimpleDateFormat("dd/mm/yy").parse("10/05/21")
         val treatmentEndDate=SimpleDateFormat("dd/mm/yy").parse("20/06/21")
-        val currentTime: Date = Calendar.getInstance().getTime()
-        print("current time is "+currentTime)
+        val current=SimpleDateFormat("dd/mm/yy").parse("20/06/21")
+   //     val currentTime: Date = Calendar.getInstance().getTime()
+      //  print("current time is "+currentTime)
 
 
-        val doctor = Doctor(3,"Abdelkhalek","Zellat","Cardiologue")
-        val booking =Booking(3,3,2,bookingDate,"08:00pm")
+        val doctor = Doctor(3,"Lamia","Selmande","Cardiologue")
+        val booking =Booking(3,3,3,bookingDate,"08:00pm")
         val treatment=Treatment(3,"heart attack","heart attack is dangerous disease must be controlled",treatmentBegindate,treatmentEndDate)
-        // RoomService.appDatabase.getDoctorDao().addDoctor(doctor)
-        //RoomService.appDatabase.getBookingDao().addBooking(booking)
-       // RoomService.appDatabase.getTreatmentDao().addTreatment(treatment)
-        RoomService.appDatabase.getTreatmentDao().getCurrentTreatment(currentTime)
+         RoomService.appDatabase.getDoctorDao().addDoctor(doctor)
+         RoomService.appDatabase.getBookingDao().addBooking(booking)
+         RoomService.appDatabase.getTreatmentDao().addTreatment(treatment)
+         RoomService.appDatabase.getTreatmentDao().getCurrentTreatment(current)
+         RoomService.appDatabase.getTreatmentDao().getCurrentTreatmentByDoctor(3,current)
+
 
 
 
