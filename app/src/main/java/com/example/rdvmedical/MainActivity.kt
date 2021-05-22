@@ -50,8 +50,8 @@ class MainActivity : AppCompatActivity() {
 
 
          }
-        val ID=editTextTextPersonName.getText()
-        val all = RoomService.appDatabase.getTreatmentDao().getCurrentTreatmentByDoctor("Lamia",current)
+        val firstName=editTextTextPersonName.getText().toString()
+        val all = RoomService.appDatabase.getTreatmentDao().getCurrentTreatmentByDoctor(firstName,current)
         aff2.setOnClickListener{
             view->
             Toast.makeText(applicationContext, "Voici le traitement du medecin : ${all.treatmentDescription}", Toast.LENGTH_LONG).show();
