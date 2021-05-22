@@ -84,7 +84,7 @@ class ExampleInstrumentedTest {
         mDataBase?.getBookingDao()?.addBooking(booking)
 
         val currentTime: Date = Calendar.getInstance().getTime()
-        val query= mDataBase?.getTreatmentDao()?.getCurrentTreatmentByDoctor(3,current)
+        val query= mDataBase?.getTreatmentDao()?.getCurrentTreatmentByDoctor("Lamia",current)
         assertEquals(treatment,query)
     }
 
