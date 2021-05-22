@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         RoomService.context=this
 
         // GET THE CURRENTY DATE //
-        val currentdate=System.currentTimeMillis().let { Date(it) }
+        val currentdate=SimpleDateFormat("dd/mm/yy").parse("01/05/21")
 
         //******* ADD DOCOTRS ********* //
         val doc1 = Doctor(1,"Lamia","Selmane","Cardiologue")
@@ -34,13 +34,13 @@ class MainActivity : AppCompatActivity() {
         val treatmentBegindate1=SimpleDateFormat("dd/mm/yy").parse("10/05/21")
         val treatmentBegindate2=SimpleDateFormat("dd/mm/yy").parse("13/05/21")
         val treatmentBegindate3=SimpleDateFormat("dd/mm/yy").parse("23/05/21")
-        val treatmentEndDate1=SimpleDateFormat("dd/mm/yy").parse("01/05/21")
+        val treatmentEndDate1=SimpleDateFormat("dd/mm/yy").parse("05/05/21")
         val treatmentEndDate2=SimpleDateFormat("dd/mm/yy").parse("28/05/21")
         val treatmentEndDate3=SimpleDateFormat("dd/mm/yy").parse("03/06/21")
 
         val treatment1=Treatment(1,"coruna","Covid19 caused the death of millions of people",treatmentBegindate1,treatmentEndDate1)
-        val treatment2=Treatment(2,"coruna","Covid19 caused the death of millions of people",treatmentBegindate2,treatmentEndDate2)
-        val treatment3=Treatment(3,"coruna","Covid19 caused the death of millions of people",treatmentBegindate3,treatmentEndDate3)
+        val treatment2=Treatment(2,"heart attack","heart attack ",treatmentBegindate2,treatmentEndDate2)
+        val treatment3=Treatment(3,"injury","injury",treatmentBegindate3,treatmentEndDate3)
 
         RoomService.appDatabase.getTreatmentDao().addTreatment(treatment1)
         RoomService.appDatabase.getTreatmentDao().addTreatment(treatment2)
@@ -65,8 +65,6 @@ class MainActivity : AppCompatActivity() {
 
         val i:Int
         aff1.setOnClickListener { view ->
-            Toast.makeText(applicationContext, "Voici la date : $result", Toast.LENGTH_LONG).show();
-
             var i =1
                   while (i<result.size)
                   {
@@ -78,23 +76,29 @@ class MainActivity : AppCompatActivity() {
          }
         // TESTER LA FONCTION GetCurrentTreatmentBydoctor //
 
-        val firstName=editTextTextPersonName.getText().toString()
-        val all = RoomService.appDatabase.getTreatmentDao().getCurrentTreatmentByDoctor(firstName,currentdate)
         aff2.setOnClickListener{
+
             view->
+
+            val firstName=editTextTextPersonName.getText().toString()
+            val all = RoomService.appDatabase.getTreatmentDao().getCurrentTreatmentByDoctor(firstName,currentdate)
             if (firstName!=null)
             {
-                if (all!=null)
+                if (all==null)
                 {
                     Toast.makeText(applicationContext, "Voici le traitement du medecin $firstName : ${all.treatmentDescription}", Toast.LENGTH_LONG).show();
 
                 }
-                else {
+
+                else  {
                     Toast.makeText(applicationContext, "Aucun traitement pour le medecin $firstName ", Toast.LENGTH_LONG).show();
 
                 }
             }
-            Toast.makeText(applicationContext, "Veuillez saisir un nom du medecin", Toast.LENGTH_LONG).show();
+            else {
+                Toast.makeText(applicationContext, "Veuillez saisir un nom du medecin", Toast.LENGTH_LONG).show();
+
+            }
 
 
 

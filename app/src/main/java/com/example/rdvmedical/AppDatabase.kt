@@ -11,7 +11,7 @@ import com.example.rdvmedical.Interfaces.BookingDao
 import com.example.rdvmedical.Interfaces.DoctorDao
 import com.example.rdvmedical.Interfaces.TreatmentDao
 
-@Database(entities = arrayOf(Doctor::class,Booking::class,Treatment::class),version = 2)
+@Database(entities = arrayOf(Doctor::class,Booking::class,Treatment::class),version = 1)
 @TypeConverters(Converter::class)
 abstract class AppDatabase :RoomDatabase () {
     abstract fun getDoctorDao():DoctorDao

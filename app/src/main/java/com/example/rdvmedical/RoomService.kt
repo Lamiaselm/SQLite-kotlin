@@ -6,6 +6,6 @@ import androidx.room.Room
 object RoomService {
     lateinit var context: Context
     val appDatabase:AppDatabase by lazy {
-        Room.databaseBuilder(context,AppDatabase::class.java,"db2") .allowMainThreadQueries().build()
+        Room.databaseBuilder(context,AppDatabase::class.java,"db9") .allowMainThreadQueries().build()
     }
 }
