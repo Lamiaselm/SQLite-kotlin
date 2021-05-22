@@ -61,7 +61,6 @@
         android:layout_height="43dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Medecin"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="parent"
