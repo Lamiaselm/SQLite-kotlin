@@ -83,7 +83,7 @@ class MainActivity : AppCompatActivity() {
             val firstName=editTextTextPersonName.getText().toString()
             val all = RoomService.appDatabase.getTreatmentDao().getCurrentTreatmentByDoctor(firstName,currentdate)
 
-           if (firstName!=null)
+           if (!(firstName.isEmpty()))
              {
                  if (all!==null)
                  {
